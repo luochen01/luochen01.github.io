@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /doc/
+Disallow: /papers/
+Disallow: /*.pdf$
