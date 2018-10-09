@@ -20,7 +20,7 @@
 %\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
 
 % adjust the page margins
-\usepackage[scale=0.75, top=2cm, bottom=2.54cm]{geometry}
+\usepackage[scale=0.75, top=2.2cm, bottom=2.54cm]{geometry}
 %\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
 %\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
 \usepackage{enumerate}
@@ -82,36 +82,46 @@
 \begin{document}
 \makecvtitle
 
+\section{Research Interest}
+LSM-based Storage Management in Database Systems
+
 \section{Education}
 
 \cventry{Sept. 2016--Present}{\textbf{University of California, Irvine}, CA}{Ph.D. in Computer 
-Science }{}{Supervisor: Prof. Michael Carey}{}
+Science, Specialized in Database Systems}{}{Supervisor: Prof. Michael J. Carey, GPA: 4.00/4.00}{}
 
 \cventry{Sept. 2013--July 2016}{\textbf{Tsinghua University}, China}{M.Eng. in Software 
 Engineering}{}{GPA: 94.1/100, Ranking: 2 out of 136}{
-Thesis: Policy-Based Privacy Checking for Big Data Analytics Systems
 }
 \cventry{Sept. 2009--July 2013}{\textbf{Tongji University}, China}{B.Eng. in Software Engineering}{}{GPA: 4.72/5, Ranking: 2 out of 169}{
-Thesis: Design and Implementation of a Distributed Key-Value Storage System
 }
 
 
 
 \section{Research Experience}
 
-\cvexpr{Aug. 2015--May 2016}{Logic-based Enforcement of SQL Data Use Policies}{Tsinghua 
-University}{
- \begin{itemize}
-  \item Proposed a logic-based approach for enforcing SQL data use policies
-  \item Defined a novel specification logic combining LTL and CTL for SQL query sequences
-  \item Implemented the approach on top of Spark-SQL, and demonstrated practicality with a case 
-  study comprising 106 real world policies
- \end{itemize}
+\cvexpr{Sep. 2017--Present}{LSM-based Storage Management in AsterixDB}{University of California, Irvine}{
+	\begin{itemize}
+		\item Designed efficient point lookup methods to improve the applicability of LSM-based secondary indexes
+		\item Proposed new maintenance strategies for LSM-based auxiliary structures for efficient data ingestion and query processing
+		\item Investigating flow control mechanisms to minimize stalls and variances in LSM-based storage engines
+	\end{itemize}
+}
+
+
+\cvexpr{June 2017--Sep. 2017}{Indexing in HTAP Systems}{IBM Almaden Research Center}{
+	\begin{itemize}
+		\item Designed and implemented an indexing method for Hybrid Transactional/Analytical Processing (HTAP) systems, which
+		\begin{itemize}
+			\item Unifies multi-zone data organization in HTAP systems
+			\item Supports multi-version timestamped queries for MVCC schemes
+			\item Performs non-blocking index maintenance to achieve maximum query concurrency
+		\end{itemize}
+	\end{itemize}
 }
 
 \cvexpr{July 2014--Dec. 2015}{PSpec-SQL}{Tsinghua University}{
 \begin{itemize}
-\item Tsinghua--Intel Joint Research Project
 \item Built a privacy-integrated data analytics system on top of Spark-SQL, which:
 	\begin{itemize}
 		\item Provides a high-level privacy language for specifying privacy policies
@@ -123,66 +133,42 @@ University}{
 
 \cvexpr{Mar. 2014--July 2014}{Large-Scale Software Model Inference}{Tsinghua University}{
 \begin{itemize}
-\item Independent Research Project
 \item Proposed a MapReduce-based approach for inferring software models from large logs
 \item Demonstrated efficiency and scalability with extensive experiments on AWS cloud
 \end{itemize}
-
 }
 
-\zap{
-\cvexpr{Sept. 2013--Dec. 2013}{DQCup}{Tsinghua University}{
-\begin{itemize}
-\item Course Project for \textit{Advanced Topics in Data Quality}
-\item Developed a data cleaning tool integrating various data cleaning techniques for a given task
-\item Ranked 1st among 15 teams in terms of detection accuracy, repairing accuracy, and performance
-\end{itemize}
-}
-}
-
-\cvexpr{Dec. 2012--June 2013}{KVStore}{Tongji University}{
-\begin{itemize}
-\item Bachelor Thesis Project
-\item Built a distributed key-value storage system with in-memory/persistent engines
-\item Key features include fault tolerance and automatic load balancing
-\end{itemize}
-}
 
 \section{Publications}
 \begin{enumerate}[{[1]}]
+\item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. Efficient Data Ingestion and Query Processing for LSM-Based Storage Systems. \textit{Under Submission}, preprint: arxiv.org/abs/1808.08896
+}
+
+\item \cvitem{}{\textbf{Chen Luo}, Pinar Tozun, Yuanyuan Tian, Ronald Barber, Vijayshankar Raman, and Richard Sidle.
+Umzi: Unified Multi-Zone Indexing for Large-Scale HTAP. \textit{Under Submission}
+}
+
 \item \cvitem{}{\textbf{Chen Luo}, Fei He, and Carlo Ghezzi. Inferring Software Behavioral Models 
-with MapReduce. \textit{International Symposium on Dependable Software 
-Engineering: Theories, Tools and Applications (SETTA)}, November 2015
+with MapReduce. \textit{Science of Computer Programming}, 145 (2017): 13-36
 }
 
 \item \cvitem{}{\textbf{Chen Luo}, Fei He, Dong Yan, Dan Zhang, Xin Zhou, and Bow-Yaw 
   Wang. PSpec: A Formal Privacy Language for Data Analytics (Poster). \textit{International 
-  Conference on Software Engineering (ICSE)}, May 2017. \textit{To appear}
+  Conference on Software Engineering (ICSE)}, 2017
 }
 
 \item \cvitem{}{\textbf{Chen Luo}, Fei He. SMT-Based Query Tracking for Differentially Private Data 
-  Analytics Systems. \textit{Frontiers of Computer Science}. \textit{To appear}}
-
-\item \cvitem{}{\textbf{Chen Luo}, Fei He, Fei Peng, Dong Yan, Dan Zhang, and Xin Zhou. PSpec-SQL: 
-Enforcing Privacy Policies in Big Data Analytics. \textit{Under Submission}
-}
-
-\item \cvitem{}{Ning Liu, \textbf{Chen Luo}, Fei He. A Logical Approach to
-  Enforcing SQL Data Use Policies. \textit{Under Submission}}
+	Analytics Systems. \textit{Frontiers of Computer Science}, In Press}
 
 \end{enumerate}
 
-\section{Presentation}
-\cvlistitem{Inferring Software Behavioral Models with MapReduce. \textit{International Symposium on 
-Dependable Software Engineering: Theories, Tools and Applications (SETTA)}, Nanjing, China, 
-November 2015}
-
-
 \section{Work Experience}
-\cvexpr{Mar. 2014--May 2016 }{Research Assistant}{Tsinghua University}{
-  \cvlistitem{Led a group in conducting research on security and privacy aspects of data analytics 
-    systems}
-  \cvlistitem{Conducted independent research on formal methods}
+\cvexpr{June 2017--Sep. 2017}{Research Summer Intern}{IBM Almaden Research Center}{
+	\cvlistitem{Work on indexing in Hybrid Transaction/Analytical Processing (HTAP) systems}
+}
+
+\cvexpr{May 2017--Present}{Committer}{Apache AsterixDB}{
+	\cvlistitem{Committer of Apache AsterixDB open source project}
 }
 
 \cvexpr{July 2012--Mar. 2013}{Software Developer Intern}{eBay China Development Center}{
@@ -190,19 +176,15 @@ November 2015}
   \cvlistitem{Redeveloped the internal web traffic analytics system with MapReduce}
 }
 
-\cvexpr{Mar. 2011--June 2012}{Research Assistant}{Tongji University}{
-  \cvlistitem{Participated in the development of a customer service and support system}
-}
-
 \section{Teaching Assistant}
-\cvlistitem{\cvitemwithcomment{}{Programming in C++ as a Second Language, University of California, 
-Irvine}{Fall 2016}}
+\cvlistitem{\cvitemwithcomment{}{Priciples of Data Management, University of California, 
+		Irvine}{Fall 2017/2018}}
 
-\cvlistitem{\cvitemwithcomment{}{Modeling and Verification of Software Systems, Tsinghua 
-University}{Spring 2015}}
+\cvlistitem{\cvitemwithcomment{}{Data Sturctures, University of California, 
+		Irvine}{Winter 2018}}
 
-\cvlistitem{\cvitemwithcomment{}{Object-Oriented Programming C++, Tongji University}{Spring 2011}}
-
+\cvlistitem{\cvitemwithcomment{}{Projects in Databases and Web Applications, University of California, 
+		Irvine}{Winter/Spring 2017}}
 
 \section{Honors \& Awards}
 \cvlistitem{\cvitemwithcomment{}{Graduate with Honor of Beijing, Tsinghua University (top 
