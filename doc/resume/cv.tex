@@ -8,8 +8,8 @@
 
 \documentclass[11pt,a4paper,roman]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
 
-
 \newcommand{\zap}[1]{ }
+\newcommand{\reduce}{\vspace{-0.115in}}
 
 % moderncv themes
 \moderncvstyle{banking}                             % style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
@@ -20,7 +20,7 @@
 %\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
 
 % adjust the page margins
-\usepackage[scale=0.75, top=2.2cm, bottom=2.54cm]{geometry}
+\usepackage[scale=0.8, top=1cm, bottom=1.0cm]{geometry}
 %\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
 %\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
 \usepackage{enumerate}
@@ -45,6 +45,15 @@
     \end{minipage}}\fi%
   \par\addvspace{#1}}
 
+\newcommand*{\cvschool}[6][1em]{
+	\begin{tabular*}{\maincolumnwidth}{l@{\extracolsep{\fill}}r}%
+		{#3} & {\small\itshape#2}\\%
+		{#4} & \\
+		{#6} & \\
+		%
+	\end{tabular*}%
+	\par\addvspace{#1}}
+
 \renewcommand*{\cvitemwithcomment}[4][1em]{%
   \savebox{\cvitemwithcommentmainbox}{\ifthenelse{\equal{#2}{}}{}{\hintstyle{#2}: }#3}%
   \setlength{\cvitemwithcommentmainlength}{\widthof{\usebox{\cvitemwithcommentmainbox}}}%
@@ -60,9 +69,10 @@
   \makehead%
   }% to avoid weird spacing bug at the first section if no blank line is left after \maketitle}
 
+
 \newcommand{\cvexpr}[5][1em]{
   \begin{tabular*}{\maincolumnwidth}{l@{\extracolsep{\fill}}r}%
-    {\textbf{#3}\ifthenelse{\equal{#4}{}}{}{, #4}} & {\small\itshape#2}%
+    {\textbf{#3}\ifthenelse{\equal{#4}{}}{}{, #4}} & {\itshape#2}%
   \end{tabular*}%
   \\
   \begin{minipage}{\maincolumnwidth}%
@@ -81,24 +91,28 @@
 \begin{document}
 \makecvtitle
 
-\section{Research Interest}
-Storage Management in Database Systems
+\zap{
+\reduce
+\section{Objective}
+\vspace{-0.05in}
+To obtain a software engineering internship specializing in Data Management Systems
+}
 
+\reduce
 \section{Education}
-
+\vspace{-0.05in}
 \cventry{Sept. 2016--Present}{\textbf{University of California, Irvine}, CA}{Ph.D. in Computer 
-Science, Specialized in Database Systems}{}{Supervisor: Prof. Michael J. Carey, GPA: 4.00/4.00}{}
+Science, Specialized in Data Management Systems}{}{Supervisor: Prof. Michael J. Carey, GPA: 4.00/4.00}{}
+\vspace{-0.15in}
+\cvschool{Sept. 2013--July 2016}{\textbf{Tsinghua University}, China}{M.Eng. in Software 
+Engineering}{}{GPA: 94.1/100, Ranking: 2 out of 136}
+\vspace{-0.15in}
+\cvschool{Sept. 2009--July 2013}{\textbf{Tongji University}, China}{B.Eng. in Software Engineering}{}{GPA: 4.72/5, Ranking: 2 out of 169}
+\reduce
 
-\cventry{Sept. 2013--July 2016}{\textbf{Tsinghua University}, China}{M.Eng. in Software 
-Engineering}{}{GPA: 94.1/100, Ranking: 2 out of 136}{
-}
-\cventry{Sept. 2009--July 2013}{\textbf{Tongji University}, China}{B.Eng. in Software Engineering}{}{GPA: 4.72/5, Ranking: 2 out of 169}{
-}
-
-
-
+\reduce
 \section{Research Experience}
-
+\vspace{-0.05in}
 \cvexpr{Sep. 2017--Present}{LSM-based Storage Management in AsterixDB}{University of California, Irvine}{
 	\begin{itemize}
 		\item Designed efficient LSM point lookup methods to improve the applicability of secondary indexes
@@ -106,8 +120,7 @@ Engineering}{}{GPA: 94.1/100, Ranking: 2 out of 136}{
 		\item Investigating flow control mechanisms to minimize stalls and variances in LSM-based storage engines
 	\end{itemize}
 }
-
-
+\reduce
 \cvexpr{June 2017--Sep. 2017}{Indexing in HTAP Systems}{IBM Almaden Research Center}{
 	\begin{itemize}
 		\item Designed and implemented an indexing method for Hybrid Transactional/Analytical Processing (HTAP) systems, which
@@ -118,7 +131,7 @@ Engineering}{}{GPA: 94.1/100, Ranking: 2 out of 136}{
 		\end{itemize}
 	\end{itemize}
 }
-
+\reduce
 \cvexpr{July 2014--Dec. 2015}{PSpec-SQL}{Tsinghua University}{
 \begin{itemize}
 \item Built a privacy-integrated data analytics system on top of Spark-SQL, which:
@@ -129,76 +142,52 @@ Engineering}{}{GPA: 94.1/100, Ranking: 2 out of 136}{
 	\end{itemize}
 \end{itemize}
 }
-
+\reduce
 \cvexpr{Mar. 2014--July 2014}{Large-Scale Software Model Inference}{Tsinghua University}{
 \begin{itemize}
 \item Proposed a MapReduce-based approach for inferring software models from large logs
 \item Demonstrated efficiency and scalability with extensive experiments on AWS cloud
 \end{itemize}
 }
+\reduce
 
+\reduce
+\section{Work Experience}
+\vspace{-0.05in}
+\cvexpr{June 2017--Sep. 2017}{Research Summer Intern}{IBM Almaden Research Center}{
+	\cvlistitem{Worked on indexing management in Hybrid Transaction/Analytical Processing (HTAP) systems}
+}
+\reduce
+\cvexpr{July 2012--Mar. 2013}{Software Developer Intern}{eBay China Development Center}{
+	\cvlistitem{Participated in the development of eBay's web application framework}
+	\cvlistitem{Redeveloped the internal web traffic analytics system with MapReduce}
+}
+\reduce
 
-\section{Publications}
+\reduce
+\section{Selected Publications}
+\vspace{-0.05in}
 \begin{enumerate}[{[1]}]
-\item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. Efficient Data Ingestion and Query Processing for LSM-Based Storage Systems. \textit{International Conference on Very Large Data Bases (VLDB)}, 2019, to appear}
+\item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. LSM-Based Storage Techniques: A Survey. \textit{In Preparation}  }
+\reduce
+\item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. Efficient Data Ingestion and Query Processing for LSM-Based Storage Systems. \textit{International Conference on Very Large Data Bases (PVLDB)}, 2019, to appear}
+\reduce
 % preprint: arxiv.org/abs/1808.08896
 \item \cvitem{}{\textbf{Chen Luo}, Pinar Tozun, Yuanyuan Tian, Ronald Barber, Vijayshankar Raman, and Richard Sidle.
-Umzi: Unified Multi-Zone Indexing for Large-Scale HTAP. \textit{International Conference on Extending Database Technology (EDBT)}, 2019, to appear
+Umzi: Unified Multi-Zone Indexing for Large-Scale HTAP. \textit{ International Conference on Extending Database Technology (EDBT)}, 2019, to appear
 }
-
+\reduce
 \item \cvitem{}{\textbf{Chen Luo}, Fei He, and Carlo Ghezzi. Inferring Software Behavioral Models 
 with MapReduce. \textit{Science of Computer Programming}, 145 (2017): 13-36
 }
-
+\reduce
 \item \cvitem{}{\textbf{Chen Luo}, Fei He, Dong Yan, Dan Zhang, Xin Zhou, and Bow-Yaw 
   Wang. PSpec: A Formal Privacy Language for Data Analytics (Poster). \textit{International 
   Conference on Software Engineering (ICSE)}, 2017
 }
-
-%\item \cvitem{}{\textbf{Chen Luo}, Fei He. SMT-Based Query Tracking for Differentially Private Data 
-%	Analytics Systems. \textit{Frontiers of Computer Science}, In Press}
-
+\reduce
 \end{enumerate}
 
-\section{Work Experience}
-\cvexpr{June 2017--Sep. 2017}{Research Summer Intern}{IBM Almaden Research Center}{
-	\cvlistitem{Worked on indexing in Hybrid Transaction/Analytical Processing (HTAP) systems}
-}
-
-\cvexpr{May 2017--Present}{Committer}{Apache AsterixDB}{
-	\cvlistitem{Committer of Apache AsterixDB open source project}
-}
-
-\cvexpr{July 2012--Mar. 2013}{Software Developer Intern}{eBay China Development Center}{
-  \cvlistitem{Participated in the development of eBay's web application framework}
-  \cvlistitem{Redeveloped the internal web traffic analytics system with MapReduce}
-}
-
-\section{Teaching Assistance}
-\cvlistitem{\cvitemwithcomment{}{Priciples of Data Management, University of California, 
-		Irvine}{Fall 2017/2018}}
-
-\cvlistitem{\cvitemwithcomment{}{Data Sturctures, University of California, 
-		Irvine}{Winter 2018}}
-
-\cvlistitem{\cvitemwithcomment{}{Projects in Databases and Web Applications, University of California, 
-		Irvine}{Winter/Spring 2017}}
-
-\section{Honors \& Awards}
-\cvlistitem{\cvitemwithcomment{}{Graduate with Honor of Beijing, Tsinghua University (top 
-    5\%)}{2016}}
-\cvlistitem{\cvitemwithcomment{}{First Class Scholarship, Tsinghua University (top 10\%)}{2014, 
-2015}}
-\cvlistitem{\cvitemwithcomment{}{Graduate with Honor of Shanghai, Tongji University (top 
-5\%)}{2013}}
-\cvlistitem{\cvitemwithcomment{}{Outstanding Student, Tongji University (top 5\%)}{2010, 2011}}
-\cvlistitem{\cvitemwithcomment{}{First Class Scholarship, Tongji University (top 5\%)}{2011}}
-
-
-\section{Technical Skills}
-\cvlistitem{\textbf{Programming Languages}: Java, C/C++, Scala, Python, SQL, Bash}
-\cvlistitem{\textbf{Databases and Systems}: AsterixDB, MySQL, Hadoop, Spark, Spark-SQL, Hive}
-\cvlistitem{\textbf{Software Tools}: Eclipse, LaTex, Visual Studio, Matlab}
 
 \clearpage
 \end{document}
