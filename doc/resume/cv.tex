@@ -7,7 +7,6 @@
 
 
 \documentclass[11pt,a4paper,roman]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
-
 \newcommand{\zap}[1]{ }
 \newcommand{\reduce}{\vspace{-0.115in}}
 
@@ -20,12 +19,13 @@
 %\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
 
 % adjust the page margins
-\usepackage[scale=0.8, top=1cm, bottom=1.0cm]{geometry}
+\usepackage[scale=0.75, top=1.4cm, bottom=1.4cm]{geometry}
 %\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
 %\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
 \usepackage{enumerate}
 
 \usepackage{fontspec}
+\usepackage{fontawesome}
 
 \usepackage{color}
 
@@ -34,7 +34,7 @@
 \renewcommand*{\cventry}[7][1em]{
   \begin{tabular*}{\maincolumnwidth}{l@{\extracolsep{\fill}}r}%
     {#3} & {\small\itshape#2}\\%
-    {#4} & \\
+    {#4} &  \\
     {#6} & \\
    %
   \end{tabular*}%
@@ -48,10 +48,14 @@
 \newcommand*{\cvschool}[6][1em]{
 	\begin{tabular*}{\maincolumnwidth}{l@{\extracolsep{\fill}}r}%
 		{#3} & {\small\itshape#2}\\%
-		{#4} & \\
-		{#6} & \\
+		{#4} & {\small #5} \\
 		%
 	\end{tabular*}%
+	\ifx&#6&%
+	\else{\\%
+		\begin{minipage}{\maincolumnwidth}%
+			#6%
+	\end{minipage}}\fi%
 	\par\addvspace{#1}}
 
 \renewcommand*{\cvitemwithcomment}[4][1em]{%
@@ -72,7 +76,7 @@
 
 \newcommand{\cvexpr}[5][1em]{
   \begin{tabular*}{\maincolumnwidth}{l@{\extracolsep{\fill}}r}%
-    {\textbf{#3}\ifthenelse{\equal{#4}{}}{}{, #4}} & {\itshape#2}%
+    {\textbf{#3}\ifthenelse{\equal{#3}{}}{\textbf{#4}}{, #4}} & {\itshape#2}%
   \end{tabular*}%
   \\
   \begin{minipage}{\maincolumnwidth}%
@@ -91,103 +95,103 @@
 \begin{document}
 \makecvtitle
 
-\zap{
 \reduce
-\section{Objective}
+\section{Research Interest}
 \vspace{-0.05in}
-To obtain a software engineering internship specializing in Data Management Systems
-}
+Database Storage Management, LSM-trees, Indexing
 
 \reduce
 \section{Education}
 \vspace{-0.05in}
-\cventry{Sept. 2016--Present}{\textbf{University of California, Irvine}, CA}{Ph.D. in Computer 
-Science, Specialized in Data Management Systems}{}{Supervisor: Prof. Michael J. Carey, GPA: 4.00/4.00}{}
+\cvschool{Sept. 2016--Dec. 2020}{\textbf{University of California, Irvine}, CA}{Ph.D. in Computer Science. Supervisor: Michael J. Carey}{GPA: 4.00/4.00}
+{Thesis: On Optimizing LSM-based Storage for Big Data Management Systems}
 \vspace{-0.15in}
 \cvschool{Sept. 2013--July 2016}{\textbf{Tsinghua University}, China}{M.Eng. in Software 
-Engineering}{}{GPA: 94.1/100, Ranking: 2 out of 136}
+Engineering}{GPA: 94.1/100 (2 out of 136)}{}
 \vspace{-0.15in}
-\cvschool{Sept. 2009--July 2013}{\textbf{Tongji University}, China}{B.Eng. in Software Engineering}{}{GPA: 4.72/5, Ranking: 2 out of 169}
-\reduce
+\cvschool{Sept. 2009--July 2013}{\textbf{Tongji University}, China}{B.Eng. in Software Engineering}{GPA: 4.72/5 (2 out of 169)}{}
 
 \reduce
+\reduce
+
+
 \section{Research Experience}
 \vspace{-0.05in}
-\cvexpr{Sep. 2017--Present}{LSM-based Storage Management in AsterixDB}{University of California, Irvine}{
-	\begin{itemize}
-		\item Designed efficient LSM point lookup methods to improve the applicability of secondary indexes
-		\item Proposed new maintenance strategies for LSM-based secondary indexes and filters for efficient data ingestion and query processing
-		\item Investigating flow control mechanisms to minimize stalls and variances in LSM-based storage engines
-	\end{itemize}
-}
-\reduce
-\cvexpr{June 2017--Sep. 2017}{Indexing in HTAP Systems}{IBM Almaden Research Center}{
-	\begin{itemize}
-		\item Designed and implemented an indexing method for Hybrid Transactional/Analytical Processing (HTAP) systems, which
-		\begin{itemize}
-			\item Unifies multi-zone data organization in HTAP systems
-			\item Supports multi-version timestamped queries for MVCC schemes
-			\item Performs non-blocking index maintenance to achieve maximum query concurrency
-		\end{itemize}
-	\end{itemize}
-}
-\reduce
-\cvexpr{July 2014--Dec. 2015}{PSpec-SQL}{Tsinghua University}{
+\cvexpr{}{}{Efficient Maintenance and Exploitation of LSM-based auxiliary structures [PVLDB'19]}{
 \begin{itemize}
-\item Built a privacy-integrated data analytics system on top of Spark-SQL, which:
-	\begin{itemize}
-		\item Provides a high-level privacy language for specifying privacy policies
-		\item Enforces privacy compliances against submitted queries using program analysis techniques
-		\item Integrates with differential privacy to offer provable privacy guarantees
-	\end{itemize}
+	\item Designed various primary lookup optimizations exploiting LSM-tree's multi-components design
+	\item Proposed a Validation strategy to maintain LSM-based secondary indexes lazily and more efficiently
+	\item Proposed a Delete-Bitmap strategy to maximize the pruning capabilities of LSM-based filters
 \end{itemize}
 }
 \reduce
-\cvexpr{Mar. 2014--July 2014}{Large-Scale Software Model Inference}{Tsinghua University}{
-\begin{itemize}
-\item Proposed a MapReduce-based approach for inferring software models from large logs
-\item Demonstrated efficiency and scalability with extensive experiments on AWS cloud
-\end{itemize}
+\cvexpr{}{}{Minimizing LSM-tree's Write Stalls via Novel Merge Scheduling [PVLDB'20]}{
+	\begin{itemize}
+		\item Proposed a two-phase evaluation approach to evaluate write stalls of various LSM-tree designs
+		\item Proposed a novel greedy merge scheduler to minimize write stalls of LSM-trees
+		\item Substantially reduced percentile write latencies without impacting write throughput
+	\end{itemize}
 }
 \reduce
+\cvexpr{}{}{Adaptive Memory Management of LSM-trees [Under Submission]}{
+	\begin{itemize}
+		\item Proposed a memory management architecture to enable adaptive memory management for LSM-trees
+		\item Proposed a new memory component structure to better exploit large memory to minimize write costs
+		\item Designed and implemented a memory tuner to tune optimal memory allocation between write memory and buffer cache
+	\end{itemize}
+}
 
 \reduce
-\section{Work Experience}
-\vspace{-0.05in}
-\cvexpr{June 2017--Sep. 2017}{Research Summer Intern}{IBM Almaden Research Center}{
-	\cvlistitem{Worked on indexing management in Hybrid Transaction/Analytical Processing (HTAP) systems}
+\reduce
+
+\section{Internship Experience}
+\cvexpr{June 2019--Sep. 2019}{Research Intern}{Microsoft Research, Redmond}{
+	\begin{itemize}
+		\item Mentor: David Lomet
+		\item Built a customized SSD controller on open-channel SSDs while supporting variable-size pages
+	\end{itemize}
+}
+\reduce
+\cvexpr{June 2017--Sep. 2017}{Research Intern}{IBM Almaden Research Center}{
+	\begin{itemize}
+		\item Mentor: Pinar Tozun, Yuanyuan Tian
+		\item Designed and implemented a multi-zone indexing method for HTAP systems that provides a unified view for evolving data [EDBT'19]
+	\end{itemize}
 }
 \reduce
 \cvexpr{July 2012--Mar. 2013}{Software Developer Intern}{eBay China Development Center}{
-	\cvlistitem{Participated in the development of eBay's web application framework}
-	\cvlistitem{Redeveloped the internal web traffic analytics system with MapReduce}
+\begin{itemize}
+	\item Participated in the development of eBay's web application framework
+	\item Redeveloped the internal web traffic analytics system with MapReduce
+\end{itemize}
 }
 \reduce
 
-\reduce
 \section{Selected Publications}
 \vspace{-0.05in}
 \begin{enumerate}[{[1]}]
-\item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. LSM-Based Storage Techniques: A Survey. \textit{In Preparation}  }
+\item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. LSM-based storage techniques: a survey. \emph{VLDB Journal}, 29 (1), pp. 393--418, 2020}
 \reduce
-\item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. Efficient Data Ingestion and Query Processing for LSM-Based Storage Systems. \textit{International Conference on Very Large Data Bases (PVLDB)}, 2019, to appear}
+\item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. Efficient data ingestion and query processing for LSM-based storage systems. \emph{PVLDB}, 12(5), pp. 531--543, 2019}
 \reduce
-% preprint: arxiv.org/abs/1808.08896
+\item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. On performance stability in LSM-based storage systems. \emph{PVLDB}, 13(4), pp. 449--462, 2019}
+\reduce
 \item \cvitem{}{\textbf{Chen Luo}, Pinar Tozun, Yuanyuan Tian, Ronald Barber, Vijayshankar Raman, and Richard Sidle.
-Umzi: Unified Multi-Zone Indexing for Large-Scale HTAP. \textit{ International Conference on Extending Database Technology (EDBT)}, 2019, to appear
+Umzi: Unified Multi-Zone Indexing for Large-scale HTAP. \emph{EDBT}, pp. 1--12, 2019}
+\reduce
+\item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. Breaking down memory walls: adaptive memory management for LSM-based storage systems. \emph{Under submission}}
+\end{enumerate}
+
+\zap{
+\reduce
+\item \cvitem{}{\textbf{Chen Luo}, Fei He, Dong Yan, Dan Zhang, Xin Zhou, and Bow-Yaw 
+	Wang. PSpec-SQL: Enabling Fine-Grained Control for Distributed Data Analytics. \textit{IEEE Transactions on Dependable and Secure Computing (TDSC)}, 2019
 }
 \reduce
 \item \cvitem{}{\textbf{Chen Luo}, Fei He, and Carlo Ghezzi. Inferring Software Behavioral Models 
-with MapReduce. \textit{Science of Computer Programming}, 145 (2017): 13-36
+	with MapReduce. \textit{Science of Computer Programming}, 145 (2017): 13-36
 }
-\reduce
-\item \cvitem{}{\textbf{Chen Luo}, Fei He, Dong Yan, Dan Zhang, Xin Zhou, and Bow-Yaw 
-  Wang. PSpec: A Formal Privacy Language for Data Analytics (Poster). \textit{International 
-  Conference on Software Engineering (ICSE)}, 2017
 }
-\reduce
-\end{enumerate}
-
 
 \clearpage
 \end{document}

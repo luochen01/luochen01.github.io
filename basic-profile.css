@@ -10,7 +10,7 @@ For more information, see http://andreasviklund.com/templates/basic-profile/
 body {
 	background: top center no-repeat;
 	color: #303030;
-	font: 84% Arial, Helvetica, sans-serif;
+	font: 90% Arial, Helvetica, sans-serif;
 	line-height: 1.6em;
 }
 
@@ -23,14 +23,27 @@ a:hover {
 	text-decoration: underline;
 }
 
-p,ul,ol,dl {
-	margin: 0 0 20px 0;
+.link {
+	color: #39c;
+	text-decoration: none;
+}
+
+.link:hover {
+	text-decoration: underline;
+}
+
+p,ol,dl,ul {
+	margin: 0 0 10px 0;
+}
+
+li ul {
+	margin: 0 0 0 20px;
 }
 
 h1 {
 	text-align:center;
 	color: #888;
-	font-size: 3.2em;
+	font-size: 2em;
 	line-height: 1.1em;
 	margin: 20px 0 0 0;
 }
@@ -41,12 +54,13 @@ h1 a {
 }
 
 h2 {
-	font-size: 2em;
+	font-size: 1.8em;
 	color: #333;
 	margin: 0 0 20px;
 	letter-spacing: -1px;
 	border-bottom: 2px solid #eee;
 }
+
 
 h3 {
 	font-size: 1.8em;
@@ -160,3 +174,4 @@ h2 a:hover {
   text-transform: none;
   text-decoration: none;
 }
+
