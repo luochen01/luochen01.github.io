@@ -19,10 +19,11 @@
 %\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
 
 % adjust the page margins
-\usepackage[scale=0.75, top=1.4cm, bottom=1.4cm]{geometry}
+\usepackage[scale=0.85, top=0.5cm, bottom=0.5cm]{geometry}
 %\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
 %\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
 \usepackage{enumerate}
+%\usepackage{hyperref}
 
 \usepackage{fontspec}
 \usepackage{fontawesome}
@@ -30,6 +31,7 @@
 \usepackage{color}
 
 \setmainfont[Ligatures=TeX]{Times New Roman}
+\renewcommand*{\namefont}{\fontsize{20}{50}\bfseries\upshape}
 
 \renewcommand*{\cventry}[7][1em]{
   \begin{tabular*}{\maincolumnwidth}{l@{\extracolsep{\fill}}r}%
@@ -90,6 +92,7 @@
 \address{Department of Computer Science, University of California, Irvine}{Irvine}{CA}
 \mobile{949-372-8206}                         
 \email{cluo8@uci.edu}
+\homepage{www.ics.uci.edu/\string~cluo8/}
 
 
 \begin{document}
@@ -98,12 +101,12 @@
 \reduce
 \section{Research Interest}
 \vspace{-0.05in}
-Database Storage Management, LSM-trees, Indexing
+Database Storage Management, LSM-trees
 
 \reduce
 \section{Education}
 \vspace{-0.05in}
-\cvschool{Sept. 2016--Dec. 2020}{\textbf{University of California, Irvine}, CA}{Ph.D. in Computer Science. Supervisor: Michael J. Carey}{GPA: 4.00/4.00}
+\cvschool{Sept. 2016--Dec. 2020}{\textbf{University of California, Irvine}, CA}{Ph.D. in Computer Science. Supervisor: {Michael J. Carey}}{GPA: 4.00/4.00}
 {Thesis: On Optimizing LSM-based Storage for Big Data Management Systems}
 \vspace{-0.15in}
 \cvschool{Sept. 2013--July 2016}{\textbf{Tsinghua University}, China}{M.Eng. in Software 
@@ -117,27 +120,26 @@ Engineering}{GPA: 94.1/100 (2 out of 136)}{}
 
 \section{Research Experience}
 \vspace{-0.05in}
-\cvexpr{}{}{Efficient Maintenance and Exploitation of LSM-based auxiliary structures [PVLDB'19]}{
+\cvexpr{}{}{Efficient Maintenance and Exploitation of LSM-based auxiliary structures [PVLDB 2019]}{
 \begin{itemize}
-	\item Designed various primary lookup optimizations exploiting LSM-tree's multi-components design
-	\item Proposed a Validation strategy to maintain LSM-based secondary indexes lazily and more efficiently
-	\item Proposed a Delete-Bitmap strategy to maximize the pruning capabilities of LSM-based filters
+	\item Designed efficient point lookup methods to improve the applicability of LSM-based secondary indexes
+	\item Proposed new maintenance strategies for LSM-based secondary indexes and range filters that substantially improved ingestion performance
 \end{itemize}
 }
 \reduce
-\cvexpr{}{}{Minimizing LSM-tree's Write Stalls via Novel Merge Scheduling [PVLDB'20]}{
+\cvexpr{}{}{Minimizing LSM-tree's Write Stalls via Novel Merge Scheduling [PVLDB 2019]}{
 	\begin{itemize}
 		\item Proposed a two-phase evaluation approach to evaluate write stalls of various LSM-tree designs
-		\item Proposed a novel greedy merge scheduler to minimize write stalls of LSM-trees
-		\item Substantially reduced percentile write latencies without impacting write throughput
+		\item Designed a novel greedy merge scheduler to minimize write stalls of LSM-trees
+		\item Key insight is that LSM-trees can achieve both high write throughput and low percentile latencies
 	\end{itemize}
 }
 \reduce
-\cvexpr{}{}{Adaptive Memory Management of LSM-trees [Under Submission]}{
+\cvexpr{}{}{Adaptive Memory Management for LSM-trees [PVLDB 2020]}{
 	\begin{itemize}
-		\item Proposed a memory management architecture to enable adaptive memory management for LSM-trees
-		\item Proposed a new memory component structure to better exploit large memory to minimize write costs
-		\item Designed and implemented a memory tuner to tune optimal memory allocation between write memory and buffer cache
+		\item Proposed a new LSM memory management architecture, including a new memory component structure,
+		novel flush policies, and a memory tuner, for adaptive memory management
+		\item Extensive experiments on YCSB and TPC-C benchmarks demonstrated the effectiveness of the proposed techniques in reducing I/O costs
 	\end{itemize}
 }
 
@@ -145,17 +147,20 @@ Engineering}{GPA: 94.1/100 (2 out of 136)}{}
 \reduce
 
 \section{Internship Experience}
+\vspace{-0.05in}
 \cvexpr{June 2019--Sep. 2019}{Research Intern}{Microsoft Research, Redmond}{
 	\begin{itemize}
-		\item Mentor: David Lomet
-		\item Built a customized SSD controller on open-channel SSDs while supporting variable-size pages
+		\item Mentor: {David Lomet}
+		\item Built a customized SSD controller to support batched writes and variable-size pages \textbf{[ICDE 2021]}
+		\item Collaborated with David Lomet on designing and optimizing a novel cleaning algorithm for log-structured stores that substantially
+		reduced cleaning overheads
 	\end{itemize}
 }
 \reduce
 \cvexpr{June 2017--Sep. 2017}{Research Intern}{IBM Almaden Research Center}{
 	\begin{itemize}
-		\item Mentor: Pinar Tozun, Yuanyuan Tian
-		\item Designed and implemented a multi-zone indexing method for HTAP systems that provides a unified view for evolving data [EDBT'19]
+		\item Mentor: {Pinar Tozun}, {Yuanyuan Tian}
+		\item Designed and implemented a unified multi-zone indexing method for evolving data in HTAP systems \textbf{[EDBT 2019]}
 	\end{itemize}
 }
 \reduce
@@ -166,20 +171,26 @@ Engineering}{GPA: 94.1/100 (2 out of 136)}{}
 \end{itemize}
 }
 \reduce
-
+\reduce
 \section{Selected Publications}
 \vspace{-0.05in}
 \begin{enumerate}[{[1]}]
+\item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. Breaking down memory walls: adaptive memory management for LSM-based storage systems. \emph{PVLDB}, 2020, to appear}
+\reduce
+\item \cvitem{}{Jae Young Do, \textbf{Chen Luo}, and David B. Lomet. Programming an SSD controller to support batched writes for variable-size pages. \emph{ICDE}, 2021, to appear}
+\reduce
 \item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. LSM-based storage techniques: a survey. \emph{VLDB Journal}, 29 (1), pp. 393--418, 2020}
 \reduce
-\item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. Efficient data ingestion and query processing for LSM-based storage systems. \emph{PVLDB}, 12(5), pp. 531--543, 2019}
-\reduce
 \item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. On performance stability in LSM-based storage systems. \emph{PVLDB}, 13(4), pp. 449--462, 2019}
+\reduce
+\item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. Efficient data ingestion and query processing for LSM-based storage systems. \emph{PVLDB}, 12(5), pp. 531--543, 2019}
 \reduce
 \item \cvitem{}{\textbf{Chen Luo}, Pinar Tozun, Yuanyuan Tian, Ronald Barber, Vijayshankar Raman, and Richard Sidle.
 Umzi: Unified Multi-Zone Indexing for Large-scale HTAP. \emph{EDBT}, pp. 1--12, 2019}
 \reduce
-\item \cvitem{}{\textbf{Chen Luo}, Michael J. Carey. Breaking down memory walls: adaptive memory management for LSM-based storage systems. \emph{Under submission}}
+\item \cvitem{}{ David B. Lomet, \textbf{Chen Luo}. Efficiently reclaiming space in a log structured store. \emph{Under submission}. 
+	Preprint: \url{https://arxiv.org/abs/2005.00044}}
+\reduce
 \end{enumerate}
 
 \zap{
