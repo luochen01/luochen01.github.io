@@ -1,2 +1,2 @@
 #!/bin/bash
-java -Xmx512m -cp gallery.jar:lib/* photo.GalleryGenerator $@
+java -Xmx1024m -cp gallery.jar:lib/* photo.GalleryGenerator $@
